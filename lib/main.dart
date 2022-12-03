@@ -10,6 +10,8 @@ class Myapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: new ThemeData(
+          scaffoldBackgroundColor: Color.fromARGB(251, 101, 214, 173)),
       home: Scaffold(
           body: Center(
               child: Column(
@@ -32,10 +34,17 @@ class Myapp extends StatelessWidget {
           ),
           TextButton(
             style: TextButton.styleFrom(
-              backgroundColor: Colors.red,
+              backgroundColor: Colors.blue,
             ),
             onPressed: null,
             child: Text("Entrar"),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.blue,
+            ),
+            onPressed: null,
+            child: Text("Cadastrar"),
           ),
         ],
       ))),
