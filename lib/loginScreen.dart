@@ -97,7 +97,9 @@ class LoginScreenState extends State<LoginScreen> {
                           backgroundColor:
                               const Color.fromARGB(255, 255, 255, 255),
                         ),
-                        onPressed: null,
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/register');
+                        },
                         child: const Text("Quero me cadastrar"),
                       ),
                     ),

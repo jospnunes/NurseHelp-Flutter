@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'loginScreen.dart';
+import 'registerScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -14,13 +15,14 @@ class Myapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'primeiro',
+      title: 'nurse_help',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       // rotas
       routes: {
         '/login': (context) => const LoginScreen(),
+        '/register': (context) => const RegisterScreen(),
       },
 
       home: const LoginScreen(),
