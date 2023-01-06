@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -80,11 +79,7 @@ class LoginScreenState extends State<LoginScreen> {
                                   .signInWithEmailAndPassword(
                                       email: _email, password: _password);
                             } on FirebaseAuthException catch (e) {
-                              if (e.code == 'user-not-found') {
-                                print("Usuario não encontrado!");
-                              } else if (e.code == 'worng-password') {
-                                print("Senha incorreta!");
-                              }
+                              print("erro: ${e.code}");
                             }
                           }
                         },
