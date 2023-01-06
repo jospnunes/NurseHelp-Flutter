@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "386478297945",
+    "project_id": "nurseflutter-20145",
+    "storage_bucket": "nurseflutter-20145.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386478297945:android:0dd2932bd5af79a856b248",
+        "android_client_info": {
+          "package_name": "com.example.primeiro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386478297945-qmirq4hjhp3r873njksun53h8spoj9l0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxXTRlK3DHM0K3CC80b_PdjCcZT73sN7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386478297945-qmirq4hjhp3r873njksun53h8spoj9l0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
