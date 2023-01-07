@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dialogs.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -75,11 +76,12 @@ class LoginScreenState extends State<LoginScreen> {
                             _formKey.currentState?.save();
                             // firebase
                             try {
-                              final credential = await FirebaseAuth.instance
+                              await FirebaseAuth.instance
                                   .signInWithEmailAndPassword(
                                       email: _email, password: _password);
                             } on FirebaseAuthException catch (e) {
-                              print("erro: ${e.code}");
+                              customDialog(
+                                  context, "Erro no login", " ${e.code}");
                             }
                           }
                         },
