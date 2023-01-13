@@ -21,14 +21,10 @@ class LoginScreenState extends State<LoginScreen> {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(
           email: _email, password: _password);
-      return "Sucess";
+      return "ok";
     } on FirebaseAuthException catch (e) {
-      customDialog(
-          context, "Erro no login", " ${e.code}");
-    } catch(e){
       return e.toString();
     }
-    return null;
   }
 
   navigateTo(route){
@@ -92,10 +88,13 @@ class LoginScreenState extends State<LoginScreen> {
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState?.save();
-                            await loginFirebase();
+                          final message =  await loginFirebase();
+                              if(message!.contains("ok")){
+                                navigateTo("/home");
+                              } else{
+                                
+                              }
 
-                            //customDialog(context, "Aviso" , "Login efetuado!");
-                            //navigateTo('/home');
 
                           }
                         },
