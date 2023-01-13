@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'loginScreen.dart';
-import 'registerScreen.dart';
+import 'login_screen.dart';
+import 'register_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +24,7 @@ class Myapp extends StatelessWidget {
       routes: {
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
+        '/home' : (context) => const HomeScreen(),
       },
 
       home: const LoginScreen(),

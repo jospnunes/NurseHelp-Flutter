@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,6 +15,25 @@ class LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   late String _email;
   late String _password;
+
+  Future<String?> loginFirebase() async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+          email: _email, password: _password);
+      return "Sucess";
+    } on FirebaseAuthException catch (e) {
+      customDialog(
+          context, "Erro no login", " ${e.code}");
+    } catch(e){
+      return e.toString();
+    }
+    return null;
+  }
+
+  navigateTo(route){
+    Navigator.pushNamed(context, route);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,15 +92,11 @@ class LoginScreenState extends State<LoginScreen> {
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState?.save();
-                            // firebase
-                            try {
-                              await FirebaseAuth.instance
-                                  .signInWithEmailAndPassword(
-                                      email: _email, password: _password);
-                            } on FirebaseAuthException catch (e) {
-                              customDialog(
-                                  context, "Erro no login", " ${e.code}");
-                            }
+                            await loginFirebase();
+
+                            //customDialog(context, "Aviso" , "Login efetuado!");
+                            //navigateTo('/home');
+
                           }
                         },
                         child: const Text("Entrar"),
@@ -100,7 +114,7 @@ class LoginScreenState extends State<LoginScreen> {
                               const Color.fromARGB(255, 255, 255, 255),
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/register');
+                          navigateTo("/register");
                         },
                         child: const Text("Quero me cadastrar"),
                       ),

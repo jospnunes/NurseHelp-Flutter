@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dialogs.dart';
 
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -19,6 +20,20 @@ class RegisterScreenState extends State<RegisterScreen> {
   late String _password;
   late String _confPassword;
 
+  registerFirebase() async {
+    try {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+          email: _email, password: _password);
+    } on FirebaseAuthException catch (e) {
+      customDialog(
+          context, "Erro no registro ", " ${e.code}");
+    }
+  }
+
+  navigateTo(route){
+    Navigator.pushNamed(context, route);
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -99,16 +114,13 @@ class RegisterScreenState extends State<RegisterScreen> {
                           backgroundColor:
                               const Color.fromARGB(255, 12, 0, 140),
                         ),
-                        onPressed: () async {
+                        onPressed: ()  {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState?.save();
-                            try {
-                              await FirebaseAuth.instance
-                                  .createUserWithEmailAndPassword(
-                                      email: _email, password: _password);
-                            } on FirebaseAuthException catch (e) {
-                              customDialog(
-                                  context, "Erro no registro ", " ${e.code}");
+                            if(_password == _confPassword){
+                              registerFirebase();
+                              customDialog(context, "Aviso", "Registro efetuado!");
+                              navigateTo("/home");
                             }
                           }
                         },
