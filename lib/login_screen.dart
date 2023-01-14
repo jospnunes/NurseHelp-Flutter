@@ -90,6 +90,7 @@ class LoginScreenState extends State<LoginScreen> {
                             _formKey.currentState?.save();
                           final message =  await loginFirebase();
                               if(message!.contains("ok")){
+                                customDialog(context, "Aviso", "Login efetuado!");
                                 navigateTo("/home");
                               } else{
                                 customDialog(context, "Aviso", message);
