@@ -92,10 +92,8 @@ class LoginScreenState extends State<LoginScreen> {
                               if(message!.contains("ok")){
                                 navigateTo("/home");
                               } else{
-                                // Retorna erro
+                                customDialog(context, "Aviso", message);
                               }
-
-
                           }
                         },
                         child: const Text("Entrar"),
